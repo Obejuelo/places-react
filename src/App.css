@@ -1,0 +1,121 @@
+*{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+body{
+  width: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+
+.my-card{
+  display: flex;
+  flex-direction: row;
+}
+
+.my-card i{
+  width: 90px;
+  font-size: 60px;
+  padding: 15px;
+  color: #f2f2f2;
+}
+
+.my-card div{
+  text-align: center;
+}
+
+.my-card div h4{
+  margin-block-end: -5px;
+}
+
+.my-card div p{
+  font-size: 13px;
+}
+
+.sitios {
+  width: 100%;
+}
+
+.form-login{
+  margin: 0 auto;
+  width: 70%;
+}
+
+.input-field{
+  width: 100%;
+}
+
+.login-img{
+  width: 100%;
+  height: 100vh;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+/* ----------DASHBOARD---------- */
+.btn-dashboard{
+  display: block !important;
+  margin-bottom: 1em !important;
+}
+.FAV{
+  position: fixed !important;
+  right: 2em !important;
+  bottom: 2em !important;
+}
+
+.place-avatar{
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  overflow: hidden;
+}
+
+.place-avatar img{
+  width: 100%;
+}
+
+/* ---------- ANIMATIONS ---------- */
+.fade-enter {
+  transform: scale(0);
+}
+.fade-enter-active {
+  transform: scale(1);
+  transition: all 300ms ease-in;
+}
+.fade-exit {
+  transform: scale(1);
+}
+.fade-exit-active {
+  transform: scale(0);
+  transition: all 300ms ease-in;
+}
+
+.transition-enter {
+  transform: translateY(100%);
+}
+.transition-enter-active {
+  transform: translateY(0);
+  transition: all 300ms ease-in;
+}
+.transition-exit {
+  transform: translateY(-100%);
+}
+.transition-exit-active {
+  transform: translateY(0);
+  transition: all 300ms ease-in;
+}
+
+/* ---------- Place only ---------- */
+.place-img{
+  max-width: 100%;
+  height: 300px;
+  position: relative !important;
+  top: -19px !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
