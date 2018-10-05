@@ -12,7 +12,7 @@ export const getPlace = (id) => {
 export const signIn = (body) => {
 	return fetch(`http://localhost:4200/session`,{
 		method: 'POST',
-		body: body,
+		body: JSON.stringify(body),
 		headers: {
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'
@@ -20,6 +20,19 @@ export const signIn = (body) => {
 	})
 	.then(res => res.json())
 	.catch(console.log())
+}
+
+export const register = (body) => {
+	return fetch(`http://localhost:4200/users`, {
+		method: 'POST',
+		body: JSON.stringify(body),
+		headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		}
+	})
+		.then(res => res.json())
+		.catch(console.log())
 }
 
 export default {

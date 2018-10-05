@@ -13,8 +13,8 @@ class Login extends Component {
 
 	login = (e) => {
 		e.preventDefault();
-		const name = document.getElementById('name');
-		const pass = document.getElementById('name');
+		const name = document.getElementById('name').value;
+		const pass = document.getElementById('name').value;
 		
 		let body = {
 			email: name,
