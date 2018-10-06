@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import CardView from '../components/populares/cardView';
+import {connect} from 'react-redux';
+
 import Header from '../components/header/Header';
 import NavBar from '../components/NavBar';
 import data from '../helpers/places';
+import { getPlaces } from '../helpers/places';
 
 class Home extends Component {
-	 state = {
+
+	constructor(props){
+		super(props);
+		console.log(this.props.places);
+	}
+	state = {
 	 	places: data.places
-	 }
+	}
 
 	hidePlace = (place) => {
 		let newPlace = this.state.places.filter(el => el !== place);
@@ -20,6 +28,12 @@ class Home extends Component {
 				return(<CardView place={place} key={index} hidePlace={this.hidePlace}/>)
 			})
 		)
+	}
+
+	getPlaces = () => {
+		getPlaces().then((data) => {
+			const places = data.docs.docs;
+		})
 	}
 
 	render() {
@@ -43,5 +57,11 @@ class Home extends Component {
 		);
 	}
 }
+
+function mapeStateToProps(state, ownProps){
+	return {
+		places: state.places
+	}
+}
  
-export default Home;
+export default connect(mapeStateToProps)(Home);

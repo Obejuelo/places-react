@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from "react-router-dom";
+
 import Home from '../pages/Home';
 import Login from '../pages/login';
 import Place from '../pages/place';
@@ -8,7 +9,7 @@ import New from '../pages/new';
 import '../App.css';
 import Dashboard from '../pages/dashboard';
 
-const userRegister = true;
+const userRegister = false;
 
 class Router extends Component {
 
