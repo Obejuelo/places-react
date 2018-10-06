@@ -36,11 +36,12 @@ class Login extends Component {
 						<div className="col-xs-12 col-md-6" style={{ display: 'flex',  height: '100vh', alignItems: 'center' }}>
 							<form className="form-login" style={{ height: '200px'}}>
 								<TextField
-									className="input-field"
-									label="Name"
+									className="email-field"
+									label="Email"
 									margin="normal"
 									ref={this.nameRef}
 									id="name"
+									required
 								/>
 								<TextField
 									className="input-field"
@@ -49,6 +50,7 @@ class Login extends Component {
 									type="password"
 									ref={this.passRef}
 									id="pass"
+									required
 								/>
 								<Button 
 									variant="contained" 
