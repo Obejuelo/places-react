@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 import Navbar from '../components/NavBar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import * as actions from '../actions/userActions';
 import {signIn} from '../helpers/places';
 
+
 class Login extends Component {
 
-	constructor(props){
-		super(props);
-		
-	}
+	// constructor(props){
+	// 	super(props);
+	// }
 	componentDidMount(){
-		console.log(this.props.login.jwt);
+		// console.log(this.props.login.jwt);
 	}
 
 	login = (e) => {
 		e.preventDefault();
-		const name = document.getElementById('name').value;
-		const pass = document.getElementById('name').value;
+		const email = document.getElementById('email').value;
+		const password = document.getElementById('pass').value;
 		
-		let body = {
-			email: name,
-			password: pass
-		}
+		let body = {email, password}
 
-		signIn(body).then(data => {
-			console.log(data);
-			this.props.dispatch(actions.login(data.jwt));
-		})
+		signIn(body)
+			.then(data => {
+				this.props.dispatch(actions.login(data.jwt));
+				this.props.dispatch(actions.loadUser(data.user))
+				this.props.history.push('/')	
+			})
 
 	}
 	render() { 
@@ -44,14 +44,14 @@ class Login extends Component {
 						<div className="col-xs-12 col-md-6" style={{ display: 'flex',  height: '100vh', alignItems: 'center' }}>
 						
 							<form className="form-login" style={{ height: '200px'}}>
-								<h1>{this.props.login.jwt}</h1>
+								
 								<TextField
 									className="input-field"
 									label="Email"
 									margin="normal"
+									type="email"
 									ref={this.nameRef}
-									id="name"
-									required
+									id="email"
 								/>
 								<TextField
 									className="input-field"
@@ -60,7 +60,6 @@ class Login extends Component {
 									type="password"
 									ref={this.passRef}
 									id="pass"
-									required
 								/>
 								<Button 
 									variant="contained" 
@@ -88,4 +87,4 @@ function mapeStateToProps(state, ownProps) {
 	}
 }
  
-export default connect(mapeStateToProps)(Login);
+export default withRouter(connect(mapeStateToProps)(Login));

@@ -3,7 +3,8 @@ import Navbar from '../components/NavBar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
-
+import {connect} from 'react-redux';
+import * as actions from '../actions/userActions';
 import {register} from '../helpers/places';
 
 class Register extends Component {
@@ -11,16 +12,17 @@ class Register extends Component {
 
 	create = (e) => {
 		e.preventDefault();
+		const email = document.getElementById('email').value;
 		const name = document.getElementById('name').value;
-		const pass = document.getElementById('name').value;
+		const password = document.getElementById('pass').value;
 
-		let body = {
-			email: name,
-			password: pass
-		}
+		let body = {name, email, password}
 
 		register(body).then(data => {
-			console.log(data);
+			// console.log(data);
+			this.props.dispatch(actions.login(data.jwt));
+				this.props.dispatch(actions.loadUser(data.user))
+			this.props.history.push('/')
 		})
 	}
 
@@ -33,6 +35,13 @@ class Register extends Component {
 					<div className="row" style={{ marginTop: '-20px', width: '100%', marginLeft: '0' }}>
 						<div className="col-xs-12 col-md-6" style={{ display: 'flex', height: '100vh', alignItems: 'center' }}>
 							<form className="form-login" style={{ height: '200px' }}>
+								<TextField
+									className="input-field"
+									label="Email"
+									margin="normal"
+									type="email"
+									id="email"
+								/>
 								<TextField
 									className="input-field"
 									label="Name"
@@ -62,4 +71,10 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+function mapeStateToProps(state, ownProps) {
+	return {
+		login: state.user
+	}
+}
+
+export default connect(mapeStateToProps)(Register);

@@ -5,18 +5,24 @@ import {connect} from 'react-redux';
 import Header from '../components/header/Header';
 import NavBar from '../components/NavBar';
 import data from '../helpers/places';
+import * as actions from '../actions/placesActions';
 import { getPlaces } from '../helpers/places';
 
 class Home extends Component {
 
-	constructor(props){
-		super(props);
-		console.log(this.props.places);
-	}
+	// constructor(props){
+	// 	super(props);
+	// 	console.log(this.props.places);
+	// }
 	state = {
 	 	places: data.places
 	}
 
+	componentDidMount(){
+		// console.log(this.props.places);
+		this.getPlaces();
+	}
+	
 	hidePlace = (place) => {
 		let newPlace = this.state.places.filter(el => el !== place);
 		this.setState({places: newPlace})
@@ -33,6 +39,7 @@ class Home extends Component {
 	getPlaces = () => {
 		getPlaces().then((data) => {
 			const places = data.docs.docs;
+			this.props.dispatch(actions.loadPlaces(places))
 		})
 	}
 
