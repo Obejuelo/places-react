@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
-import Navbar from '../components/NavBar';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import CardHorizontal from '../components/populares/cardHorizontal';
 import { Link } from "react-router-dom";
+import {connect} from 'react-redux';
+import * as actions from '../actions/placesActions';
 
-import { getPlaces} from '../helpers/places';
+// import { getPlaces} from '../helpers/places';
+import CardHorizontal from '../components/populares/cardHorizontal';
+import Navbar from '../components/NavBar';
 
 class Dashboard extends Component {
-	constructor(props){
-		super(props);
+	//state = { places: [] }
 
-		this.getPlaces();
-	}
-	state = { places: [] }
-
-	getPlaces = () => {
-		getPlaces().then((data) => {
-			this.setState({places: data.docs.docs})
-		})
+	componentDidMount(){
+		this.props.dispatch(actions.loadAll())
 	}
 
 	places = () => {
-		return this.state.places.map((place, index) => {
+		return this.props.places.map((place, index) => {
 			return <CardHorizontal key={index} place={place} slug={place._id}/>
 		})
 	}
@@ -66,5 +61,11 @@ class Dashboard extends Component {
 		);
 	}
 }
+
+function mapeStateToProps(state, ownProps){
+	return{
+		places: state.places
+	}
+}
  
-export default Dashboard;
+export default connect(mapeStateToProps)(Dashboard);

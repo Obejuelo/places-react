@@ -5,6 +5,7 @@ import Navbar from '../components/NavBar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import {push} from 'react-router-redux';
 
 import * as actions from '../actions/userActions';
 import {signIn} from '../helpers/places';
@@ -29,8 +30,13 @@ class Login extends Component {
 		signIn(body)
 			.then(data => {
 				this.props.dispatch(actions.login(data.jwt));
+				if(!this.props.login.jwt){
+					alert('Datos incorrectos')
+					return
+				} 
 				this.props.dispatch(actions.loadUser(data.user))
-				this.props.history.push('/')	
+				this.props.dispatch(push('/'));
+				this.props.history.push('/');
 			})
 
 	}

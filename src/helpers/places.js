@@ -1,16 +1,18 @@
+import config from '../config/config';
+
 export const getPlaces = () => {
-	return fetch('http://localhost:4200/places')
+	return fetch(`${config.url}places`)
 		.then(res => res.json())
 		.catch(console.log())
 }
 export const getPlace = (id) => {
-	return fetch(`http://localhost:4200/places/${id}`)
+	return fetch(`${config.url}places/${id}`)
 		.then(res => res.json())
 		.catch(console.log())
 }
 
 export const signIn = (body) => {
-	return fetch(`http://localhost:4200/session`,{
+	return fetch(`${config.url}session`,{
 		method: 'POST',
 		body: JSON.stringify(body),
 		headers: {
@@ -23,7 +25,7 @@ export const signIn = (body) => {
 }
 
 export const register = (body) => {
-	return fetch(`http://localhost:4200/users`, {
+	return fetch(`${config.url}users`, {
 		method: 'POST',
 		body: JSON.stringify(body),
 		headers: {

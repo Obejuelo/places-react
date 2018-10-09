@@ -1,8 +1,7 @@
 export default function placesReducer (state = [], action) {
 	switch (action.type) {
-		case 'LOAD_PLACE':
+		case 'LOAD_PLACES':
 			return action.places
-	
 		default:
 			return state;
 	}

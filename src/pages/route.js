@@ -39,7 +39,7 @@ class Router extends Component {
 			<Switch>
 				<Route exact path="/" component={this.home()} />
 				<Route path="/lugares/:slug" component={Place} />
-				<Route path="/login" component={this.signIn()} />
+				<Route path="/login" component={Login} />
 				<Route path="/register" component={this.signOut()} />
 				<Route path="/new" component={New} />
 			</Switch>
