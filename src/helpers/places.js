@@ -37,6 +37,8 @@ export const register = (body) => {
 		.catch(console.log())
 }
 
+export const myVar = 'test of repository git';
+
 // export default {
 // 	places: [
 // 		{
