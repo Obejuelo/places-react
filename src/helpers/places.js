@@ -37,25 +37,25 @@ export const register = (body) => {
 		.catch(console.log())
 }
 
-export default {
-	places: [
-		{
-			imageUrl: '/images/img1.jpg',
-			title: 'Desayunos el rey',
-			description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.',
-			address: 'Calle Villa Alta #15'
-		},
-		{
-			imageUrl: '/images/img2.jpg',
-			title: 'Starbucks Norte',
-			description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.',
-			address: 'Calle Villa Alta #15'
-		},
-		{
-			imageUrl: '/images/img3.jpg',
-			title: 'Pizza de amor',
-			description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.',
-			address: 'Calle Villa Alta #15'
-		}
-	]
-}
+// export default {
+// 	places: [
+// 		{
+// 			imageUrl: '/images/img1.jpg',
+// 			title: 'Desayunos el rey',
+// 			description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.',
+// 			address: 'Calle Villa Alta #15'
+// 		},
+// 		{
+// 			imageUrl: '/images/img2.jpg',
+// 			title: 'Starbucks Norte',
+// 			description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.',
+// 			address: 'Calle Villa Alta #15'
+// 		},
+// 		{
+// 			imageUrl: '/images/img3.jpg',
+// 			title: 'Pizza de amor',
+// 			description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.',
+// 			address: 'Calle Villa Alta #15'
+// 		}
+// 	]
+// }
